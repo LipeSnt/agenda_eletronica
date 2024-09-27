@@ -28,6 +28,7 @@ Este projeto é uma aplicação de agenda eletrônica que permite aos usuários 
 ##
 
 
-![painel](https://github.com/user-attachments/assets/32f67b91-1a08-468c-acd2-39dfd3f32910)
+![painel(2)](https://github.com/user-attachments/assets/a5730c10-6589-4ba7-a8f1-046a6a07cee0)
+
 
 
