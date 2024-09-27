@@ -25,4 +25,9 @@ Este projeto é uma aplicação de agenda eletrônica que permite aos usuários 
   - PHP 8.2 (Puro)
   - MySQL 9.0
 
+##
+
+
+![painel](https://github.com/user-attachments/assets/32f67b91-1a08-468c-acd2-39dfd3f32910)
+
 
