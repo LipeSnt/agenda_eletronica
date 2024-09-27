@@ -9,8 +9,8 @@ document.addEventListener('DOMContentLoaded', function() {
     
     var calendar = new FullCalendar.Calendar(calendarEl, {
         initialView: 'dayGridMonth',
-        locale: 'pt-br', // Definindo o idioma para português brasileiro
-        timeZone: 'local', // Usando o fuso horário local
+        locale: 'pt-br', 
+        timeZone: 'local', 
 
         headerToolbar: {
             left: 'prev,next today',
@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', function() {
             right: 'dayGridMonth,timeGridWeek,timeGridDay'
         },
 
-        // Formatação das datas e horas no estilo brasileiro
+     
         views: {
             dayGridMonth: {
                 dayMaxEventRows: 4
@@ -33,14 +33,14 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         },
 
-        // Formato dos eventos
+ 
         eventTimeFormat: {
             hour: '2-digit',
             minute: '2-digit',
-            hour12: false // Horário no formato de 24 horas
+            hour12: false 
         },
 
-        // Dados dos eventos
+        
         events: [
             <?php foreach ($activities as $activity): ?>
             {
@@ -67,7 +67,7 @@ require 'db.php';
 
 $user_id = $_SESSION['user_id'];
 
-// Obtém as atividades do usuário logado
+
 $stmt = $pdo->prepare("SELECT * FROM activities WHERE user_id = :user_id");
 $stmt->bindParam(':user_id', $user_id);
 $stmt->execute();
@@ -119,20 +119,25 @@ $activities = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 </tr>
             </thead>
             <tbody>
-                <?php foreach ($activities as $activity): ?>
-                <tr>
-                    <td><?= $activity['name'] ?></td>
-                    <td><?= $activity['description'] ?></td>
-                    <td><?= $activity['start_time'] ?></td>
-                    <td><?= $activity['end_time'] ?></td>
-                    <td><?= $activity['status'] ?></td>
-                    <td>
-                        <a href="activity.php?id=<?= $activity['id'] ?>" class="btn btn-primary">Editar</a>
-                        <a href="delete_activity.php?id=<?= $activity['id'] ?>" class="btn btn-danger">Excluir</a>
-                    </td>
-                </tr>
-                <?php endforeach; ?>
-            </tbody>
+    <?php foreach ($activities as $activity): ?>
+    <tr>
+        <td><?= $activity['name'] ?></td>
+        <td><?= $activity['description'] ?></td>
+        <td>
+            <?= date('d/m/Y H:i', strtotime($activity['start_time'])) ?>
+        </td>
+        <td>
+            <?= date('d/m/Y H:i', strtotime($activity['end_time'])) ?>
+        </td>
+        <td><?= $activity['status'] ?></td>
+        <td>
+            <a href="activity.php?id=<?= $activity['id'] ?>" class="btn btn-primary">Editar</a>
+            <a href="delete_activity.php?id=<?= $activity['id'] ?>" class="btn btn-danger">Excluir</a>
+        </td>
+    </tr>
+    <?php endforeach; ?>
+</tbody>
+
         </table>
     </div>
 </body>

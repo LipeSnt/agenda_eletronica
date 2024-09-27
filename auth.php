@@ -8,7 +8,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $action = $_POST['action'];
 
     if ($action == 'register') {
-        // Cadastro de usuário
+        
         $hashed_password = password_hash($password, PASSWORD_BCRYPT);
 
         $stmt = $pdo->prepare("INSERT INTO users (login, password) VALUES (:login, :password)");
@@ -21,7 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             echo "Erro ao cadastrar usuário.";
         }
     } elseif ($action == 'login') {
-        // Autenticação de login
+        
         $stmt = $pdo->prepare("SELECT * FROM users WHERE login = :login");
         $stmt->bindParam(':login', $login);
         $stmt->execute();
